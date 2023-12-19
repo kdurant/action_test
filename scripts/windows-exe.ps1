@@ -17,7 +17,7 @@ function Main() {
 
     New-Item -ItemType Directory $archiveName
     # 拷贝exe
-    Copy-Item bin\$targetName $archiveName\
+    Copy-Item bin\untitled.exe
 }
 
 if ($null -eq $archiveName || $null -eq $targetName) {
