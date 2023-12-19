@@ -2,7 +2,6 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-VERSION = 0.2.6
 CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -18,6 +17,17 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui
+
+VERSION = 0.2.8
+
+GIT_HASH = $$system(git --git-dir $$PWD/.git log -1 --pretty=format:%h)
+DEFINES += GIT_HASH=\\\"$$GIT_HASH\\\"
+
+GIT_DATE = $$system(git --git-dir $$PWD/.git --work-tree $$PWD log -1 --format=%cs )
+DEFINES += GIT_DATE=\\\"$$GIT_DATE\\\"
+
+Debug: TARGET = Radar
+Release: TARGET = Radar_$$GIT_DATE"_"$$GIT_HASH"_release"
 
 DESTDIR = $$absolute_path($${_PRO_FILE_PWD_}/bin/)
 
